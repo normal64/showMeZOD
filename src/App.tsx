@@ -20,10 +20,17 @@ function App() {
       
     }
   }, [formData])
+  useEffect(() => {
+    console.log(formValidationStatus);
+    
+    return () => {
+      
+    }
+  }, [])
 
   const hobbies = ["Programing", "Weight Lifting", "Drums"] as const
   const UserSchema = z.object({
-    username: z.string().min(3),
+    userName: z.string().min(3),
     userAge: z.number().gt(8),
     birthday: z.date().optional(),
     isProgrammer: z.boolean(),
