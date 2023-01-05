@@ -34,17 +34,10 @@ function App() {
     userAge: z.number().gt(8),
     birthday: z.date().optional(),
     isProgrammer: z.boolean(),
-    hobby: z.enum(hobbies)
+    //hobby: z.enum(hobbies).optional()
   })
   
-  // const user = {
-  //   username: "fucker den",
-  //   age: 31,
-  //   birthday: new Date(),
-  //   isProgrammer: true,
-  //   hobby: "Programing"
-  // }
-  // console.log(UserSchema.parse(user))
+
   return (
     <div className="App">
       <header className="App-header">
@@ -58,7 +51,7 @@ function App() {
             defaultChecked />
           <label htmlFor="scales">Programmer</label>
           <br />
-          <label>Choose a browser from this list:
+          <label>Choose a hobby from this list:
 <input list="browsers" type="text" name="myBrowser"  onChange={(e)=>setFormData({...formData,hobby:e.target.value})}/></label>
           <datalist id="browsers" >
 
@@ -67,7 +60,8 @@ function App() {
                 <option value={elem} />
               )
             })}
-          </datalist>
+          </datalist><br />
+          <button type="button" disabled={formValidationStatus ? false : true} > Enter</button>
         </form>
       </header>
 
