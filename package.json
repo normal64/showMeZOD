@@ -2,6 +2,7 @@
   "name": "learn-zod",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://normal64.github.io/showMeZOD",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -17,7 +18,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+        "deploy": "gh-pages -d dist",
+   "deploy": "gh-pages -d build",
+   "start": "parcel serve src/index.html",
+    
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,5 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "gh-pages": "^4.0.0",
+    "parcel-bundler": "^1.9.7",
+    "typescript": "^2.9.2"
   }
 }
