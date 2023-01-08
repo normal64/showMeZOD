@@ -28,12 +28,13 @@ function App() {
     }
   }, [])
 
-  const hobbies = ["Programing", "Weight Lifting", "Drums"] as const
+  const hobbies = ["Programing", "Weight Lifting", "Drums","Guitar"] as const
   const UserSchema = z.object({
     userName: z.string().min(3),
-    userAge: z.number().gt(8),
+    userAge: z.number().gt(16),
     birthday: z.date().optional(),
     isProgrammer: z.boolean(),
+    hobby: z.string().optional()
     //hobby: z.enum(hobbies).optional()
   })
   
@@ -41,17 +42,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>My ZOD form</h1>
+        <h1>Welcome</h1>
         <form>
-          <label htmlFor="uname">User name:</label><br />
+          <label htmlFor="uname">Your name:</label><br />
           <input type="text" id="uname" name="uname" value={formData.userName} onChange={(e) => setFormData({...formData,userName:e.target.value})} /><br />
           <label htmlFor="age">Age:</label><br />
           <input type="number" id="age" min="10" max="60" name="age" onChange={(e) => setFormData({...formData,userAge:Number(e.target.value)})} /><br />
           <input type="checkbox" id="scales" name="scales"  onChange={(e) => setFormData({...formData,isProgrammer:e.target.checked})} 
             defaultChecked />
-          <label htmlFor="scales">Programmer</label>
+          <label htmlFor="scales" className="checkbox-text">I would consider offering  a developer position or refer to a person in business</label>
           <br />
-          <label>Choose a hobby from this list:
+          <label>Choose a hobby: 
 <input list="browsers" type="text" name="myBrowser"  onChange={(e)=>setFormData({...formData,hobby:e.target.value})}/></label>
           <datalist id="browsers" >
 
@@ -61,7 +62,14 @@ function App() {
               )
             })}
           </datalist><br />
-          <button type="button" disabled={formValidationStatus ? false : true} > Enter</button>
+          
+          <a href="https://normal64.github.io/prtfl/">
+          <button type="button" disabled={formValidationStatus ? false : true} > 
+          Enter
+         
+          </button>
+          </a>
+
         </form>
       </header>
 
